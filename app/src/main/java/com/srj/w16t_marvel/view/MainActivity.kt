@@ -1,7 +1,8 @@
-package com.srj.w16t_marvel
+package com.srj.w16t_marvel.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.srj.w16t_marvel.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
