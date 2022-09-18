@@ -7,14 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/id_fragment_container"
+        android:id="@+id/fragment_host"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.srj.w16t_marvel.view.characters.CharactersFragment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:navGraph="@navigation/navigation"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>

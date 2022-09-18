@@ -10,6 +10,7 @@
 
     <color name="light_gray">#F1EFF3</color>
     <color name="secondary_black">#191919</color>
-    <color name="red">#AA2727</color>
+    <color name="red">#F11E24</color>
+    <color name="dark_red">#C31A1F</color>
 
 </resources>

@@ -7,7 +7,7 @@ import com.srj.w16t_marvel.R
 fun ImageView.loadImageUrl(imageUrl : String){
     Glide.with(this.context).load(imageUrl)
         .centerCrop()
-        .placeholder(R.drawable.ic_placeholder_image)
+        .placeholder(R.drawable.marvel_logo)
         .error(R.drawable.ic_error)
         .into(this)
 }

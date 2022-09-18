@@ -10,7 +10,7 @@
 
         <variable
             name="listener"
-            type="com.srj.w16t_marvel.view.characters.CharactersInteractionListener" />
+            type="com.srj.w16t_marvel.view.home.HomeInteractionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
