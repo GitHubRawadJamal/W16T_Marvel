@@ -14,8 +14,6 @@ class CharactersFragment: BaseFragment<FragmentCharactersBinding, CharactersView
         setUp()
     }
 
-    private fun setUp(){
-        //binding.textMarvelData.text = "new marvel data"
-    }
+    private fun setUp(){ }
 
 }

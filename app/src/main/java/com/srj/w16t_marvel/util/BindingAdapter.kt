@@ -11,6 +11,8 @@ import com.srj.w16t_marvel.util.extensions.showView
 import com.srj.w16t_marvel.view.base.BaseAdapter
 import com.srj.w16t_marvel.view.characters.CharactersAdapter
 import com.srj.w16t_marvel.view.characters.CharactersViewModel
+import com.srj.w16t_marvel.view.home.HomeAdapter
+import com.srj.w16t_marvel.view.home.HomeViewModel
 
 @BindingAdapter(value = ["app:showWhenLoading"])
 fun <T> showWhenLoading(view: View, state: State<T>?){
@@ -53,7 +55,13 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?){
     }
 }
 
-@BindingAdapter(value = ["app:setAdapter"])
+@BindingAdapter(value = ["app:setCharactersAdapter"])
 fun setMarvelCharactersAdapter(view: RecyclerView, viewModel: CharactersViewModel){
     view.adapter = CharactersAdapter(mutableListOf(), viewModel)
+}
+
+
+@BindingAdapter(value = ["app:setHomeAdapter"])
+fun setMarvelHomeAdapter(view: RecyclerView, viewModel: HomeViewModel){
+    view.adapter = HomeAdapter(mutableListOf(), viewModel)
 }

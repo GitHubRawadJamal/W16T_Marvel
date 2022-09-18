@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.srj.w16t_marvel.view.characters.CharactersViewModel" />
+            type="com.srj.w16t_marvel.view.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F1EFF3">
+        android:background="@color/light_gray">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/screen_on_state_success"
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:items="@{viewModel.marvelResult}"
-                app:setCharactersAdapter="@{viewModel}"
+                app:setHomeAdapter="@{viewModel}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:listitem="@layout/item_character"
@@ -110,7 +110,6 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

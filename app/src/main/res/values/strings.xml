@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Marvel</string>
+
+    <string name="text_on_response_state_error">Oops! \n There\'s no internet connection \n please check it out and try again</string>
 </resources>
