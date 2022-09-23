@@ -2,4 +2,7 @@
     <string name="app_name">Marvel</string>
 
     <string name="text_on_response_state_error">Oops! \n There\'s no internet connection \n please check it out and try again</string>
+    <string name="text_show_all_characters">Show All Marvel Characters</string>
+    <string name="text_search_for_characters">Search for Character</string>
+    <string name="text_enter_character_name">Enter character name</string>
 </resources>

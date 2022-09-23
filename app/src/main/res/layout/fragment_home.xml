@@ -12,17 +12,46 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_gray">
+        style="@style/ConstraintLayoutStyle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/screen_on_state_success"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:showWhenSuccess="@{viewModel.marvelData}">
+
+            <ImageView
+                android:id="@+id/image_marvel_logo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/marvel_logo"
+                android:background="@color/red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_all_characters"
+                android:text="@string/text_show_all_characters"
+                style="@style/TextStyle.HomeText"
+                android:layout_marginHorizontal="@dimen/space_large"
+                android:layout_marginVertical="@dimen/space_xx_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_marvel_logo"  />
+
+            <TextView
+                android:id="@+id/text_search_for_character"
+                android:text="@string/text_search_for_characters"
+                style="@style/TextStyle.HomeText"
+                android:layout_marginHorizontal="@dimen/space_large"
+                android:layout_marginVertical="@dimen/space_x_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_all_characters" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_marvel_character"
@@ -32,6 +61,7 @@
                 app:setHomeAdapter="@{viewModel}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
+                android:visibility="gone"
                 tools:listitem="@layout/item_character"
                 android:layout_marginBottom="32dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +76,9 @@
                 android:textColor="@color/red"
                 android:textSize="12sp"
                 android:gravity="center"
-                android:layout_marginVertical="8dp"
+                android:layout_marginVertical="@dimen/space_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycler_marvel_character"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,7 +108,7 @@
                 android:id="@+id/text_error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="@string/text_on_response_state_error"
+                android:text="@string/text_on_response_state_error"
                 android:textColor="@color/red"
                 android:textSize="16sp"
                 android:textStyle="bold"

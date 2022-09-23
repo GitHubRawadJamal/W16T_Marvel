@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+        <variable
+            name="item"
+            type="com.srj.w16t_marvel.model.response.marvelResponse.Character" />
+
+        <variable
+            name="listener"
+            type="com.srj.w16t_marvel.view.search.SearchInteractionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/space_small"
+        android:layout_marginHorizontal="@dimen/space_small"
+        android:background="@drawable/character_card_style"
+        android:padding="@dimen/space_small">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_character"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            tools:src="@drawable/ic_placeholder_image"
+            android:background="@color/light_gray"
+            app:imageUrl="@{item.thumbnail.path + '.' + item.thumbnail.extension}"
+            android:scaleType="fitXY"
+            app:shapeAppearanceOverlay="@style/image_card_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Character Name"
+            android:text="@{item.name }"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="4dp"
+            android:layout_marginStart="@dimen/space_small"
+            app:layout_constraintStart_toEndOf="@id/image_character"
+            app:layout_constraintTop_toTopOf="@id/image_character"
+            app:layout_constraintBottom_toBottomOf="@id/image_character"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

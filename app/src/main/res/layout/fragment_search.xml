@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.srj.w16t_marvel.view.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/ConstraintLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_enter_character_name"
+            android:textColorHint="@color/medium_gray"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/medium_gray"
+            app:endIconMode="clear_text"
+            android:background="@color/red"
+            app:boxBackgroundMode="filled"
+            app:shapeAppearanceOverlay="@style/image_card_border"
+            android:padding="@dimen/space_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="@={viewModel.searchInput}"
+                android:enabled="true"
+                android:background="@drawable/search_bar_style" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_filtered_characters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{viewModel.filteredCharacters}"
+            app:setSearchAdapter="@{viewModel}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_search"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="@dimen/space_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

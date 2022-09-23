@@ -13,6 +13,8 @@ import com.srj.w16t_marvel.view.characters.CharactersAdapter
 import com.srj.w16t_marvel.view.characters.CharactersViewModel
 import com.srj.w16t_marvel.view.home.HomeAdapter
 import com.srj.w16t_marvel.view.home.HomeViewModel
+import com.srj.w16t_marvel.view.search.SearchAdapter
+import com.srj.w16t_marvel.view.search.SearchViewModel
 
 @BindingAdapter(value = ["app:showWhenLoading"])
 fun <T> showWhenLoading(view: View, state: State<T>?){
@@ -64,4 +66,10 @@ fun setMarvelCharactersAdapter(view: RecyclerView, viewModel: CharactersViewMode
 @BindingAdapter(value = ["app:setHomeAdapter"])
 fun setMarvelHomeAdapter(view: RecyclerView, viewModel: HomeViewModel){
     view.adapter = HomeAdapter(mutableListOf(), viewModel)
+}
+
+
+@BindingAdapter(value = ["app:setSearchAdapter"])
+fun setMarvelSearchAdapter(view: RecyclerView, viewModel: SearchViewModel){
+    view.adapter = SearchAdapter(mutableListOf(), viewModel)
 }

@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.srj.w16t_marvel.view.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="Home" >
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
@@ -18,9 +18,9 @@
     <fragment
         android:id="@+id/charactersFragment"
         android:name="com.srj.w16t_marvel.view.characters.CharactersFragment"
-        android:label="CharactersFragment" />
+        android:label="Characters" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.srj.w16t_marvel.view.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="Search" />
 </navigation>
