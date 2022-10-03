@@ -14,6 +14,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        binding.recyclerMarvelCharacter.adapter = HomeAdapter(mutableListOf(), viewModel)
         setUp()
     }
 

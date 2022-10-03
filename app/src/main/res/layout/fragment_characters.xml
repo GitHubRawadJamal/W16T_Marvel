@@ -22,14 +22,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showWhenSuccess="@{viewModel.marvelData}">
+            app:showWhenSuccess="@{viewModel.charactersResponseData}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_marvel_character"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:items="@{viewModel.marvelResult}"
-                app:setCharactersAdapter="@{viewModel}"
+                app:items="@{viewModel.listCharacters}"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:listitem="@layout/item_character"
@@ -42,7 +41,7 @@
                 android:id="@+id/text_marvel_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="@{viewModel.marvelData.toData().attributionText}"
+                tools:text="@{viewModel.charactersResponseData.toData().attributionText}"
                 android:textColor="@color/red"
                 android:textSize="12sp"
                 android:gravity="center"
@@ -63,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showWhenError="@{viewModel.marvelData}" >
+            app:showWhenError="@{viewModel.charactersResponseData}" >
 
             <ImageView
                 android:id="@+id/image_error"
@@ -99,7 +98,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:showWhenLoading="@{viewModel.marvelData}" >
+            app:showWhenLoading="@{viewModel.charactersResponseData}" >
 
             <ProgressBar
                 android:layout_width="84dp"

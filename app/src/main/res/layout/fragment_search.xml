@@ -47,7 +47,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:items="@{viewModel.filteredCharacters}"
-            app:setSearchAdapter="@{viewModel}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_search"
             android:layout_marginTop="120dp"
