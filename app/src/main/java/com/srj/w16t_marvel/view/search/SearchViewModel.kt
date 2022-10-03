@@ -13,7 +13,7 @@ class SearchViewModel: BaseViewModel(), SearchInteractionListener {
 
     fun filterCharacters(characterName: String?){
         filteredList.clear()
-        marvelResult.value?.forEach {
+        listCharacters.value?.forEach {
             if(characterName?.toLowerCase()?.let { cn -> it?.name?.toLowerCase()?.contains(cn) } == true) filteredList.add(it)
         }
         if(filteredList.isNotEmpty() && characterName != "") filteredCharacters.postValue(filteredList) else filteredCharacters.postValue(emptyList())

@@ -4,54 +4,53 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.srj.w16t_marvel.model.network.MarvelApi
 import com.srj.w16t_marvel.model.network.State
-import com.srj.w16t_marvel.model.network.StateWrapper
 import com.srj.w16t_marvel.model.repository.MarvelRepositoryImpl
 import com.srj.w16t_marvel.model.response.marvelResponse.Character
 import com.srj.w16t_marvel.model.response.marvelResponse.CharacterDataWrapper
 import com.srj.w16t_marvel.util.extensions.add
+import com.srj.w16t_marvel.util.extensions.observeOnMainThread
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 abstract class BaseViewModel : ViewModel() {
     protected val compositeDisposable = CompositeDisposable()
 
-    private val marvelRepository = MarvelRepositoryImpl(MarvelApi, StateWrapper())
+    private val marvelRepository = MarvelRepositoryImpl()
 
-    private val _marvelData = MutableLiveData<State<CharacterDataWrapper?>>()
-    val marvelData: LiveData<State<CharacterDataWrapper?>> = _marvelData
+    private val _charactersResponseData = MutableLiveData<State<CharacterDataWrapper?>>(State.Loading)
+    val charactersResponseData: LiveData<State<CharacterDataWrapper?>> = _charactersResponseData
 
-    val marvelResult = MutableLiveData<List<Character?>?>()
+    val listCharacters = MutableLiveData<List<Character?>?>()
 
     init {
-        getMarvelData()
+       getAllCharacters()
     }
 
-    private fun getMarvelData(){
-        marvelRepository.getMarvelCharacters()
-            .subscribe(::onGetMarvelDataSuccess, ::onGetMarvelDataError)
-            .add(compositeDisposable)
+    private fun getAllCharacters(){
+        marvelRepository.getAllCharacters().run {
+            observeOnMainThread()
+                .subscribe(::onGetAllCharactersSuccess, ::onGetAllCharactersError)
+        }.add(compositeDisposable)
     }
 
-    private fun onGetMarvelDataSuccess(response: State<CharacterDataWrapper>) {
+    private fun onGetAllCharactersSuccess(response: State<CharacterDataWrapper>) {
         when (response) {
-            is State.Loading -> _marvelData.postValue(response)
             is State.Success -> onStateSuccess(response)
             is State.Error -> onStateError(response.message)
         }
     }
-    private fun onGetMarvelDataError(throwable: Throwable){
-        _marvelData.postValue(State.Error(throwable.message.toString()))
+    private fun onGetAllCharactersError(throwable: Throwable){
+        _charactersResponseData.postValue(State.Error(throwable.message.toString()))
     }
 
     private fun onStateSuccess(response: State<CharacterDataWrapper?>) {
-        _marvelData.value = State.Success(response.toData())
-        marvelResult.postValue(response.toData()?.data?.results)
         Log.i("MARVEL",response.toData()?.data?.results.toString())
+        _charactersResponseData.value = State.Success(response.toData())
+        listCharacters.postValue(response.toData()?.data?.results)
     }
 
     private fun onStateError(message: String) {
-        _marvelData.postValue(State.Error(message))
+        _charactersResponseData.postValue(State.Error(message))
     }
 
     override fun onCleared() {

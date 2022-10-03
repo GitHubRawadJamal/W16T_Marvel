@@ -13,6 +13,7 @@ class CharactersFragment: BaseFragment<FragmentCharactersBinding, CharactersView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        binding.recyclerMarvelCharacter.adapter = CharactersAdapter(mutableListOf(), viewModel)
         setUp()
     }
 

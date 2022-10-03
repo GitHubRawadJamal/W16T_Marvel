@@ -56,20 +56,3 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?){
         (view.adapter as BaseAdapter<T>?)?.setItems(emptyList())
     }
 }
-
-@BindingAdapter(value = ["app:setCharactersAdapter"])
-fun setMarvelCharactersAdapter(view: RecyclerView, viewModel: CharactersViewModel){
-    view.adapter = CharactersAdapter(mutableListOf(), viewModel)
-}
-
-
-@BindingAdapter(value = ["app:setHomeAdapter"])
-fun setMarvelHomeAdapter(view: RecyclerView, viewModel: HomeViewModel){
-    view.adapter = HomeAdapter(mutableListOf(), viewModel)
-}
-
-
-@BindingAdapter(value = ["app:setSearchAdapter"])
-fun setMarvelSearchAdapter(view: RecyclerView, viewModel: SearchViewModel){
-    view.adapter = SearchAdapter(mutableListOf(), viewModel)
-}

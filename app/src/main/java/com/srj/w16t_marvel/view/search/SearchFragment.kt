@@ -12,11 +12,12 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(R.lay
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recyclerFilteredCharacters.adapter = SearchAdapter(mutableListOf(), viewModel)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        setUp()
         viewModel.searchInput.observe(viewLifecycleOwner){
             viewModel.filterCharacters(it.toString())
         }
+        setUp()
     }
 
     private fun setUp() {}
